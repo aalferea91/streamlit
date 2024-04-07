@@ -5,7 +5,7 @@ import plotly.express as px
 import streamlit as st
 from datetime import datetime
 
-df_agg=pd.read_csv('Aggregated_Metrics_By_Video.csv'))
+df_agg=pd.read_csv('Aggregated_Metrics_By_Video.csv')
 
 st.header('st.button')
 
