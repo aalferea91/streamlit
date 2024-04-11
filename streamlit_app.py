@@ -5,7 +5,7 @@ import plotly.express as px
 import streamlit as st
 from datetime import datetime
 
-#@st.cache
+@st.cache
 def load_data():
     """ Loads in 4 dataframes and does light feature engineering"""
     df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
