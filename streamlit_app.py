@@ -27,6 +27,11 @@ def load_data():
 #create dataframes from the function 
 df_agg, df_agg_sub, df_comments, df_time = load_data()
 
+#additional data engineering for aggregated data 
+df_agg_diff = df_agg.copy()
+metric_date_12mo = df_agg_diff['Video publish time'].max() - pd.DateOffset(months =12)
+median_agg = df_agg_diff[df_agg_diff['Video publish time'] >= metric_date_12mo].median()
+
 
 
 add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate Metrics','Individual Video Analysis'))
