@@ -21,7 +21,7 @@ def load_data():
     df_agg_sub = pd.read_csv('Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
     df_comments = pd.read_csv('Aggregated_Metrics_By_Video.csv')
     df_time = pd.read_csv('Video_Performance_Over_Time.csv')
-    df_time['Date'] = pd.to_datetime(df_time['Date'])
+    df_time['Date'] = pd.to_datetime(df_time['Date'].astype(str),errors='coerce')
     return df_agg, df_agg_sub, df_comments, df_time 
 
 #create dataframes from the function 
