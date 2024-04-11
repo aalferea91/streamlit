@@ -24,11 +24,6 @@ def load_data():
     df_time['Date'] = pd.to_datetime(df_time['Date'].astype(str),errors='coerce')
     return df_agg, df_agg_sub, df_comments, df_time 
 
-df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
-df_agg.columns = ['Video','Video title','Video publish time','Comments added','Shares','Dislikes','Likes', 'Subscribers lost','Subscribers gained','RPM(USD)','CPM(USD)','Average % viewed','Average view duration','Views','Watch time (hours)','Subscribers','Your estimated revenue (USD)','Impressions','Impressions ctr(%)']
-st.text(type(df_agg['Video publish time'][0]))
-
-
 #create dataframes from the function 
 #df_agg, df_agg_sub, df_comments, df_time = load_data()
 
