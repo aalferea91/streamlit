@@ -23,6 +23,7 @@ def load_data():
     df_time = pd.read_csv('Video_Performance_Over_Time.csv')
     df_time['Date'] = pd.to_datetime(df_time['Date'])
     return df_agg, df_agg_sub, df_comments, df_time 
-df_agg,df_agg_sub,df_comments,df_time=load_data()
+#create dataframes from the function 
+df_agg, df_agg_sub, df_comments, df_time = load_data()
 
 add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate Metrics','Individual Video Analysis'))
