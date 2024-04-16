@@ -45,8 +45,8 @@ median_agg = df_agg_diff[df_agg_diff['Video publish time'] >= metric_date_12mo].
 
 #create differences from the median for values 
 #Just numeric columns 
-numeric_cols = np.array((df_agg_diff.dtypes == 'float64') | (df_agg_diff.dtypes == 'int64'))
-df_agg_diff.iloc[:,numeric_cols] = (df_agg_diff.iloc[:,numeric_cols] - median_agg).div(median_agg)
+#numeric_cols = np.array((df_agg_diff.dtypes == 'float64') | (df_agg_diff.dtypes == 'int64'))
+#df_agg_diff.iloc[:,numeric_cols] = (df_agg_diff.iloc[:,numeric_cols] - median_agg).div(median_agg)
 
 
 #merge daily data with publish data to get delta 
