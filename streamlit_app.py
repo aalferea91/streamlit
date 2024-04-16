@@ -76,7 +76,7 @@ add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate 
 
 #Show individual metrics 
 if add_sidebar == 'Aggregate Metrics':
-    st.write("Ken Jee YouTube Aggregated Data")
+    st.write("YouTube Aggregated Data")
 
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
