@@ -13,6 +13,9 @@ def parse_date(date_string):
     except ValueError:
         return datetime.strptime(date_string, '%b %d, %Y')
 
+def parse_date2(date_string):
+    return datetime.strptime(date_string, '%d %b %Y')
+
 def load_data():
     """ Loads in 4 dataframes and does light feature engineering"""
     df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
@@ -28,7 +31,7 @@ def load_data():
     df_agg_sub = pd.read_csv('Aggregated_Metrics_By_Country_And_Subscriber_Status.csv')
     df_comments = pd.read_csv('Aggregated_Metrics_By_Video.csv')
     df_time = pd.read_csv('Video_Performance_Over_Time.csv')
-    #df_time['Date'] = pd.to_datetime(df_time['Date'].astype(str),errors='coerce')
+    df_time['Date']=df_time['Date'].str.replace('Sept','Sep').apply(parse_date2)
     return df_agg, df_agg_sub, df_comments, df_time 
 
 df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
