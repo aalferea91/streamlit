@@ -73,3 +73,11 @@ views_cumulative.loc[:,['median_views','80pct_views','20pct_views']] = views_cum
 ###############################################################################
 
 add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate Metrics','Individual Video Analysis'))
+
+#Show individual metrics 
+if add_sidebar == 'Aggregate Metrics':
+    st.write("Ken Jee YouTube Aggregated Data")
+
+if add_sidebar == 'Individual Video Analysis':
+    videos = tuple(df_agg['Video title'])
+    st.write("Individual Video Performance")
