@@ -50,19 +50,19 @@ df_agg_diff.iloc[:,numeric_cols] = (df_agg_diff.iloc[:,numeric_cols] - median_ag
 
 
 #merge daily data with publish data to get delta 
-df_time_diff = pd.merge(df_time, df_agg.loc[:,['Video','Video publish time']], left_on ='External Video ID', right_on = 'Video')
-df_time_diff['days_published'] = (df_time_diff['Date'] - df_time_diff['Video publish time']).dt.days
+#df_time_diff = pd.merge(df_time, df_agg.loc[:,['Video','Video publish time']], left_on ='External Video ID', right_on = 'Video')
+#df_time_diff['days_published'] = (df_time_diff['Date'] - df_time_diff['Video publish time']).dt.days
 
 # get last 12 months of data rather than all data 
-date_12mo = df_agg['Video publish time'].max() - pd.DateOffset(months =12)
-df_time_diff_yr = df_time_diff[df_time_diff['Video publish time'] >= date_12mo]
+#date_12mo = df_agg['Video publish time'].max() - pd.DateOffset(months =12)
+#df_time_diff_yr = df_time_diff[df_time_diff['Video publish time'] >= date_12mo]
 
 # get daily view data (first 30), median & percentiles 
-views_days = pd.pivot_table(df_time_diff_yr,index= 'days_published',values ='Views', aggfunc = [np.mean,np.median,lambda x: np.percentile(x, 80),lambda x: np.percentile(x, 20)]).reset_index()
-views_days.columns = ['days_published','mean_views','median_views','80pct_views','20pct_views']
-views_days = views_days[views_days['days_published'].between(0,30)]
-views_cumulative = views_days.loc[:,['days_published','median_views','80pct_views','20pct_views']] 
-views_cumulative.loc[:,['median_views','80pct_views','20pct_views']] = views_cumulative.loc[:,['median_views','80pct_views','20pct_views']].cumsum()
+#views_days = pd.pivot_table(df_time_diff_yr,index= 'days_published',values ='Views', aggfunc = [np.mean,np.median,lambda x: np.percentile(x, 80),lambda x: np.percentile(x, 20)]).reset_index()
+#views_days.columns = ['days_published','mean_views','median_views','80pct_views','20pct_views']
+#views_days = views_days[views_days['days_published'].between(0,30)]
+#views_cumulative = views_days.loc[:,['days_published','median_views','80pct_views','20pct_views']] 
+#views_cumulative.loc[:,['median_views','80pct_views','20pct_views']] = views_cumulative.loc[:,['median_views','80pct_views','20pct_views']].cumsum()
 
 
 
