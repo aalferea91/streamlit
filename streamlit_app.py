@@ -41,6 +41,10 @@ df_agg.columns = ['Video','Video title','Video publish time','Comments added','S
 df_agg['Video publish time'] = df_agg['Video publish time'].apply(parse_date)
 st.dataframe(df_agg['Video publish time'])
 
+df_time = pd.read_csv('Video_Performance_Over_Time.csv')
+df_time['Date']=df_time['Date'].str.replace('Sept','Sep').apply(parse_date2)
+st.dataframe(df_time['Date'])
+
 #create dataframes from the function 
 #df_agg, df_agg_sub, df_comments, df_time = load_data()
 
