@@ -34,19 +34,11 @@ def load_data():
     df_time['Date']=df_time['Date'].str.replace('Sept','Sep').apply(parse_date2)
     return df_agg, df_agg_sub, df_comments, df_time 
 
-df_agg = pd.read_csv('Aggregated_Metrics_By_Video.csv').iloc[1:,:]
-df_agg.columns = ['Video','Video title','Video publish time','Comments added','Shares','Dislikes','Likes',
-                      'Subscribers lost','Subscribers gained','RPM(USD)','CPM(USD)','Average % viewed','Average view duration',
-                      'Views','Watch time (hours)','Subscribers','Your estimated revenue (USD)','Impressions','Impressions ctr(%)']
-df_agg['Video publish time'] = df_agg['Video publish time'].apply(parse_date)
-st.dataframe(df_agg['Video publish time'])
-
-df_time = pd.read_csv('Video_Performance_Over_Time.csv')
-df_time['Date']=df_time['Date'].str.replace('Sept','Sep').apply(parse_date2)
-st.dataframe(df_time['Date'])
 
 #create dataframes from the function 
-#df_agg, df_agg_sub, df_comments, df_time = load_data()
+df_agg, df_agg_sub, df_comments, df_time = load_data()
+st.dataframe(df_time['Date'])
+
 
 #additional data engineering for aggregated data 
 #df_agg_diff = df_agg.copy()
