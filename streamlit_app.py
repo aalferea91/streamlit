@@ -122,7 +122,7 @@ if add_sidebar == 'Individual Video Analysis':
     
     agg_filtered = df_agg[df_agg['Video title'] == video_select]
     agg_sub_filtered = df_agg_sub[df_agg_sub['Video Title'] == video_select]
-    agg_sub_filtered['Country'] = agg_sub_filtered['Country Code'].apply(audience_simple)
+    #agg_sub_filtered['Country'] = agg_sub_filtered['Country Code'].apply(audience_simple)
     agg_sub_filtered.sort_values('Is Subscribed', inplace= True)   
     
     fig = px.bar(agg_sub_filtered, x ='Views', y='Is Subscribed', color ='Country', orientation ='h')
