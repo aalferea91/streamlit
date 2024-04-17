@@ -77,6 +77,12 @@ add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate 
 #Show individual metrics 
 if add_sidebar == 'Aggregate Metrics':
     st.write("YouTube Aggregated Data")
+    df_agg_metrics = df_agg[['Video publish time','Views','Likes','Subscribers','Shares','Comments added','RPM(USD)','Average % viewed',
+                             'Avg_duration_sec', 'Engagement_ratio','Views / sub gained']]
+    metric_date_6mo = df_agg_metrics['Video publish time'].max() - pd.DateOffset(months =6)
+    metric_date_12mo = df_agg_metrics['Video publish time'].max() - pd.DateOffset(months =12)
+    metric_medians6mo = df_agg_metrics[df_agg_metrics['Video publish time'] >= metric_date_6mo].median()
+    metric_medians12mo = df_agg_metrics[df_agg_metrics['Video publish time'] >= metric_date_12mo].median()
 
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
