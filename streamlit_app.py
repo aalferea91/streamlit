@@ -125,7 +125,7 @@ if add_sidebar == 'Individual Video Analysis':
     #agg_sub_filtered['Country'] = agg_sub_filtered['Country Code'].apply(audience_simple)
     agg_sub_filtered.sort_values('Is Subscribed', inplace= True)   
     
-    fig = px.bar(agg_sub_filtered, x ='Views', y='Is Subscribed', color ='Country', orientation ='h')
+    fig = px.bar(agg_sub_filtered, x ='Views', y='Is Subscribed', orientation ='h')
     #order axis 
     st.plotly_chart(fig)
     
