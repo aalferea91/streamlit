@@ -102,10 +102,16 @@ if add_sidebar == 'Aggregate Metrics':
     df_agg_diff_final = df_agg_diff.loc[:,['Video title','Publish_date','Views','Likes','Subscribers','Shares','Comments added','RPM(USD)','Average % viewed',
                              'Avg_duration_sec', 'Engagement_ratio','Views / sub gained']]
     
-    df_agg_numeric_lst = df_agg_diff_final.median().index.tolist()
+    # Selecting numeric columns explicitly
+    numeric_cols = df_agg_diff_final.select_dtypes(include=['number']).columns
+
+    # Calculating median for selected numeric columns
+    median_values = df_agg_diff_final[numeric_cols].median()
+
+    # Converting median values to percentages
     df_to_pct = {}
-    for i in df_agg_numeric_lst:
-        df_to_pct[i] = '{:.1%}'.format
+    for col, median_value in median_values.items():
+        df_to_pct[col] = '{:.1%}'.format(median_value)
     
     st.dataframe(df_agg_diff_final.style.hide().applymap(style_negative, props='color:red;').applymap(style_positive, props='color:green;').format(df_to_pct))
 
