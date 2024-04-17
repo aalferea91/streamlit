@@ -129,27 +129,4 @@ if add_sidebar == 'Individual Video Analysis':
     #order axis 
     st.plotly_chart(fig)
     
-    agg_time_filtered = df_time_diff[df_time_diff['Video Title'] == video_select]
-    first_30 = agg_time_filtered[agg_time_filtered['days_published'].between(0,30)]
-    first_30 = first_30.sort_values('days_published')
     
-    
-    fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(x=views_cumulative['days_published'], y=views_cumulative['20pct_views'],
-                    mode='lines',
-                    name='20th percentile', line=dict(color='purple', dash ='dash')))
-    fig2.add_trace(go.Scatter(x=views_cumulative['days_published'], y=views_cumulative['median_views'],
-                        mode='lines',
-                        name='50th percentile', line=dict(color='black', dash ='dash')))
-    fig2.add_trace(go.Scatter(x=views_cumulative['days_published'], y=views_cumulative['80pct_views'],
-                        mode='lines', 
-                        name='80th percentile', line=dict(color='royalblue', dash ='dash')))
-    fig2.add_trace(go.Scatter(x=first_30['days_published'], y=first_30['Views'].cumsum(),
-                        mode='lines', 
-                        name='Current Video' ,line=dict(color='firebrick',width=8)))
-        
-    fig2.update_layout(title='View comparison first 30 days',
-                   xaxis_title='Days Since Published',
-                   yaxis_title='Cumulative views')
-    
-    st.plotly_chart(fig2)
