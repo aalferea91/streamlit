@@ -84,6 +84,8 @@ if add_sidebar == 'Aggregate Metrics':
     metric_medians6mo = df_agg_metrics[df_agg_metrics['Video publish time'] >= metric_date_6mo].median()
     metric_medians12mo = df_agg_metrics[df_agg_metrics['Video publish time'] >= metric_date_12mo].median()
 
+    col1, col2, col3, col4, col5 = st.columns(5)
+
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
     st.write("Individual Video Performance")
