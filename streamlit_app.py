@@ -113,7 +113,7 @@ if add_sidebar == 'Aggregate Metrics':
     for col, median_value in median_values.items():
         df_to_pct[col] = '{:.1%}'.format(median_value)
     
-    st.dataframe(df_agg_diff_final).format(df_to_pct))
+    st.dataframe(df_agg_diff_final.format(df_to_pct))
 
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
