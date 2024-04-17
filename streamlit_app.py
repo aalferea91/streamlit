@@ -87,6 +87,15 @@ if add_sidebar == 'Aggregate Metrics':
     col1, col2, col3, col4, col5 = st.columns(5)
     columns = [col1, col2, col3, col4, col5]
 
+    count = 0
+    for i in metric_medians6mo.index:
+        with columns[count]:
+            delta = (metric_medians6mo[i] - metric_medians12mo[i])/metric_medians12mo[i]
+            st.metric(label= i, value = round(metric_medians6mo[i],1), delta = "{:.2%}".format(delta))
+            count += 1
+            if count >= 5:
+                count = 0
+
 if add_sidebar == 'Individual Video Analysis':
     videos = tuple(df_agg['Video title'])
     st.write("Individual Video Performance")
