@@ -4,6 +4,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import streamlit as st
 from datetime import datetime
+import altair as alt
 
 @st.cache
 
@@ -72,7 +73,7 @@ views_cumulative.loc[:,['median_views','80pct_views','20pct_views']] = views_cum
 #Start building Streamlit App
 ###############################################################################
 
-add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate Metrics','Individual Video Analysis'))
+add_sidebar = st.sidebar.selectbox('Aggregate or Individual Video', ('Aggregate Metrics','Individual Video Analysis','test'))
 
 #Show individual metrics 
 if add_sidebar == 'Aggregate Metrics':
@@ -151,7 +152,38 @@ if add_sidebar == 'Individual Video Analysis':
     fig2.update_layout(title='View comparison first 30 days',
                    xaxis_title='Days Since Published',
                    yaxis_title='Cumulative views')
+
+if add_sidebar == 'test':
+    st.header('st.write')
     
-    st.plotly_chart(fig2)
+    # Example 1
     
+    st.write('Hello, *World!* :sunglasses:')
     
+    # Example 2
+    
+    st.write(1234)
+    
+    # Example 3
+    
+    df = pd.DataFrame({
+         'first column': [1, 2, 3, 4],
+         'second column': [10, 20, 30, 40]
+         })
+    st.write(df)
+    
+    # Example 4
+    
+    st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+    
+    # Example 5
+    
+    df2 = pd.DataFrame(
+         np.random.randn(200, 3),
+         columns=['a', 'b', 'c'])
+    c = alt.Chart(df2).mark_circle().encode(
+         x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
+    st.write(c)
+        st.plotly_chart(fig2)
+        
+        
