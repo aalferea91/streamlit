@@ -152,6 +152,7 @@ if add_sidebar == 'Individual Video Analysis':
     fig2.update_layout(title='View comparison first 30 days',
                    xaxis_title='Days Since Published',
                    yaxis_title='Cumulative views')
+    st.plotly_chart(fig2)
 
 if add_sidebar == 'test':
     st.header('st.write')
@@ -184,6 +185,6 @@ if add_sidebar == 'test':
     c = alt.Chart(df2).mark_circle().encode(
          x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
     st.write(c)
-        st.plotly_chart(fig2)
+        
         
         
