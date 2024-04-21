@@ -204,16 +204,7 @@ if add_sidebar == 'test':
          'Select a range of values',
          0.0, 100.0, (25.0, 75.0))
     st.write('Values:', values)
-    
-    # Example 3
-    
-    st.subheader('Range time slider')
-    
-    appointment = st.slider(
-         "Schedule your appointment:",
-         value=(time(11, 30), time(12, 45)))
-    st.write("You're scheduled for:", appointment)
-    
+       
     # Example 4
     
     st.subheader('Datetime slider')
